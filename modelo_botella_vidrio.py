@@ -1,28 +1,29 @@
-# ===== Clase padre =====
-class Botella:
-
-    # Constructor
-    def __init__(self, marca, capacidad, tapa):
-        self.marca = marca
-        self.capacidad = capacidad
-        self.tapa = tapa
+from modelo_botella import Botella   # Se importa la clase padre
 
 
-    # Método para imprimir la información de la botella
+class Botella_vidrio(Botella):
+    # Definición de la clase hija
+
+    def reutilizar_botella(self):
+        # Método que indica que la botella se puede reutilizar
+        print("La botella se va a reutilizar. Material:", self.material)
+
+
     def imprimir_info(self):
-        print("La marca es:", self.marca)
-        print("La capacidad de la botella es:", self.capacidad)
-        print("El tipo de tapa es:", self.tapa)
+        # Método que imprime la información de la botella
+        super().imprimir_info()   # Información heredada de la clase padre
+
+        print("El diseño es:", self.diseño)
+        print("El material es:", self.material)
+        print("El color es:", self.tinte)
+
+        return "Informacion encontrada"
 
 
-    # Método para llenar la botella
-    def llenar_botella(self, capacidad):
-        print("La botella se está llenando:", capacidad)
-        print("Se va a usar la tapa:", self.tapa)
+    def __init__(self, marca, capacidad, tapa, diseño, material, tinte):
+        # Constructor de la clase
+        super().__init__(marca, capacidad, tapa)
 
-
-    # Método para cerrar la tapa
-    def cerrar_tapa(self, dato_cantidad):
-        print("Se usó la tapa:", self.tapa)
-        print("Cantidad de tapas usadas:", dato_cantidad)
-        return dato_cantidad
+        self.diseño = diseño      # Diseño de la botella
+        self.material = material  # Material de la botella
+        self.tinte = tinte        # Tinte del vidrio
